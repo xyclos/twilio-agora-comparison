@@ -8,7 +8,8 @@ import React from "react"
 import { NavigationContainer, NavigationContainerRef } from "@react-navigation/native"
 
 import { createNativeStackNavigator } from "react-native-screens/native-stack"
-import { PrimaryNavigator } from "./primary-navigator"
+import { AgoraNavigator, TwilioNavigator } from "./primary-navigator"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -26,7 +27,8 @@ export type RootParamList = {
 
 const Stack = createNativeStackNavigator<RootParamList>()
 
-const RootStack = () => {
+// eslint-disable-next-line react/display-name
+const RootStack = (navigator) => () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -38,12 +40,23 @@ const RootStack = () => {
     >
       <Stack.Screen
         name="primaryStack"
-        component={PrimaryNavigator}
+        component={navigator}
         options={{
           headerShown: false,
         }}
       />
     </Stack.Navigator>
+  )
+}
+
+const Tab = createBottomTabNavigator()
+
+const Tabs = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Agora" component={RootStack(AgoraNavigator)} />
+      <Tab.Screen name="Twilio" component={RootStack(TwilioNavigator)} />
+    </Tab.Navigator>
   )
 }
 
@@ -53,7 +66,7 @@ export const RootNavigator = React.forwardRef<
 >((props, ref) => {
   return (
     <NavigationContainer {...props} ref={ref}>
-      <RootStack />
+      <Tabs />
     </NavigationContainer>
   )
 })

@@ -7,7 +7,7 @@
 import React from "react"
 
 import { createNativeStackNavigator } from "react-native-screens/native-stack"
-import { WelcomeScreen, DemoScreen } from "../screens"
+import { AgoraDemoScreen, TwilioDemoScreen } from "../screens"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -21,25 +21,45 @@ import { WelcomeScreen, DemoScreen } from "../screens"
  *   https://reactnavigation.org/docs/params/
  *   https://reactnavigation.org/docs/typescript#type-checking-the-navigator
  */
-export type PrimaryParamList = {
+export type AgoraParamList = {
   welcome: undefined
   demo: undefined
 }
 
-// Documentation: https://github.com/software-mansion/react-native-screens/tree/master/native-stack
-const Stack = createNativeStackNavigator<PrimaryParamList>()
+const AgoraStack = createNativeStackNavigator<AgoraParamList>()
 
-export function PrimaryNavigator() {
+export function AgoraNavigator() {
   return (
-    <Stack.Navigator
+    <AgoraStack.Navigator
       screenOptions={{
         headerShown: false,
         gestureEnabled: true,
       }}
     >
-      <Stack.Screen name="welcome" component={WelcomeScreen} />
-      <Stack.Screen name="demo" component={DemoScreen} />
-    </Stack.Navigator>
+      <AgoraStack.Screen name="welcome" component={AgoraDemoScreen} />
+      {/*<AgoraStack.Screen name="demo" component={DemoScreen} />*/}
+    </AgoraStack.Navigator>
+  )
+}
+
+export type TwilioParamList = {
+  welcome: undefined
+  demo: undefined
+}
+
+const TwilioStack = createNativeStackNavigator<TwilioParamList>()
+
+export function TwilioNavigator() {
+  return (
+    <TwilioStack.Navigator
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: true,
+      }}
+    >
+      <TwilioStack.Screen name="welcome" component={TwilioDemoScreen} />
+      {/*<TwilioStack.Screen name="demo" component={DemoScreen} />*/}
+    </TwilioStack.Navigator>
   )
 }
 

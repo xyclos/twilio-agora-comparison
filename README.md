@@ -1,4 +1,4 @@
-# VidTech Proof of Concept for Agora and Twilio
+# Proof of Concept for Agora and Twilio
 
 ## Before you start
 

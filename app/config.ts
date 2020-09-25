@@ -1,6 +1,11 @@
 export default {
   agora: {
-    appId: '<YOUR AGORA APP ID HERE>',
+    appId: '',
     channel: 'vidtech-channel'
+  },
+  vonage: {
+    apiKey: '',
+    sessionId: '',
+    token: ''
   }
 }

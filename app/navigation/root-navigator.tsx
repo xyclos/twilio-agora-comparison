@@ -8,7 +8,7 @@ import React from "react"
 import { NavigationContainer, NavigationContainerRef } from "@react-navigation/native"
 
 import { createNativeStackNavigator } from "react-native-screens/native-stack"
-import { AgoraNavigator, TwilioNavigator } from "./primary-navigator"
+import { AgoraNavigator, TwilioNavigator, VonageNavigator } from "./primary-navigator"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 
 /**
@@ -54,6 +54,7 @@ const Tab = createBottomTabNavigator()
 const Tabs = () => {
   return (
     <Tab.Navigator>
+      <Tab.Screen name="Vonage" component={RootStack(VonageNavigator)} />
       <Tab.Screen name="Agora" component={RootStack(AgoraNavigator)} />
       <Tab.Screen name="Twilio" component={RootStack(TwilioNavigator)} />
     </Tab.Navigator>

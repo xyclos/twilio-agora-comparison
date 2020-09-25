@@ -7,26 +7,9 @@
 import React from "react"
 
 import { createNativeStackNavigator } from "react-native-screens/native-stack"
-import { AgoraDemoScreen, TwilioDemoScreen } from "../screens"
+import { AgoraDemoScreen, TwilioDemoScreen, VonageDemoScreen } from "../screens"
 
-/**
- * This type allows TypeScript to know what routes are defined in this navigator
- * as well as what properties (if any) they might take when navigating to them.
- *
- * If no params are allowed, pass through `undefined`. Generally speaking, we
- * recommend using your MobX-State-Tree store(s) to keep application state
- * rather than passing state through navigation params.
- *
- * For more information, see this documentation:
- *   https://reactnavigation.org/docs/params/
- *   https://reactnavigation.org/docs/typescript#type-checking-the-navigator
- */
-export type AgoraParamList = {
-  welcome: undefined
-  demo: undefined
-}
-
-const AgoraStack = createNativeStackNavigator<AgoraParamList>()
+const AgoraStack = createNativeStackNavigator()
 
 export function AgoraNavigator() {
   return (
@@ -37,17 +20,11 @@ export function AgoraNavigator() {
       }}
     >
       <AgoraStack.Screen name="welcome" component={AgoraDemoScreen} />
-      {/*<AgoraStack.Screen name="demo" component={DemoScreen} />*/}
     </AgoraStack.Navigator>
   )
 }
 
-export type TwilioParamList = {
-  welcome: undefined
-  demo: undefined
-}
-
-const TwilioStack = createNativeStackNavigator<TwilioParamList>()
+const TwilioStack = createNativeStackNavigator()
 
 export function TwilioNavigator() {
   return (
@@ -58,8 +35,22 @@ export function TwilioNavigator() {
       }}
     >
       <TwilioStack.Screen name="welcome" component={TwilioDemoScreen} />
-      {/*<TwilioStack.Screen name="demo" component={DemoScreen} />*/}
     </TwilioStack.Navigator>
+  )
+}
+
+const VonageStack = createNativeStackNavigator()
+
+export function VonageNavigator() {
+  return (
+    <VonageStack.Navigator
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: true,
+      }}
+    >
+      <VonageStack.Screen name="welcome" component={VonageDemoScreen} />
+    </VonageStack.Navigator>
   )
 }
 

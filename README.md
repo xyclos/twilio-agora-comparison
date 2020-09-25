@@ -12,6 +12,7 @@
 ## Then
 
 - get your Agora app id from the Agora console and set it in `app/config.ts`
+- vonage requires appId, sessionId and a token. set those in `app/config.tx` as well
 - twilio provides a testing tool for generating a twilio token here: https://www.twilio.com/console/video/project/testing-tools
     - you'll need a twilio account first
     - save the token, you'll input it in the UI in the app
